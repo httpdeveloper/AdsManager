@@ -1,0 +1,52 @@
+{
+  "name": "AdsManager",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "flow": "flow"
+  },
+  "dependencies": {
+    "apollo-client": "^1.4.2",
+    "graphql-tag": "^2.3.0",
+    "moment": "^2.18.1",
+    "react": "16.0.0-alpha.6",
+    "react-apollo": "^1.4.2",
+    "react-native": "0.44.0",
+    "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
+    "react-native-drawer": "^2.3.0",
+    "react-native-fbsdk": "0.5.0",
+    "react-native-fetch-blob": "^0.10.5",
+    "react-native-geocoder": "^0.4.8",
+    "react-native-linear-gradient": "^2.0.0",
+    "react-native-maps": "^0.15.2",
+    "react-native-router-flux": "^3.40.1",
+    "react-native-scrollable-tab-view": "^0.6.7",
+    "react-native-simple-progressbar": "git+https://github.com/httpdeveloper/react-native-simple-progressbar.git",
+    "react-native-vector-icons": "^4.2.0",
+    "react-redux": "^5.0.5",
+    "redux": "^3.6.0",
+    "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.2.3",
+    "redux-thunk": "^2.2.0",
+    "subscriptions-transport-ws": "^0.7.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "~6.1.2",
+    "babel-jest": "20.0.3",
+    "babel-preset-react-native": "2.0.0",
+    "eslint": "^3.19.0",
+    "eslint-config-rallycoding": "^3.2.0",
+    "eslint-plugin-react": "6.10.3",
+    "flow-bin": "^0.42.0",
+    "jest": "20.0.4",
+    "react-test-renderer": "16.0.0-alpha.6"
+  },
+  "jest": {
+    "preset": "react-native",
+     "setupFiles": [
+      "./test/setup.js"
+    ]
+  }
+}

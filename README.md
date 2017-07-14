@@ -52,7 +52,7 @@ setting: {
   NETWORK_INTERFACE_URL: 'https://api.graph.cool/simple/v1/API_KEY',
   SUBSCRIPTION_CLIENT_URL: 'wss://subscriptions.graph.cool/v1/API_KEY',
   GOOGLE_MAP_API_KEY: 'API_KEY',
-  IMAGE_UPLOAD_API: 'http://yourdomain.com/IMAGE_UPLOAD_FOLDER/',
+  IMAGE_UPLOAD_API: 'http://yourdomain.com/IMAGE_UPLOAD_API',
   ...
 }
 
@@ -155,6 +155,6 @@ Author is looking for a good job :)
 Here is the [Demo](https://httpdeveloper.pythonanywhere.com/pages/adsmanager) link you can check out.
 
 # Article
-[Article](https://medium.com/@httpdeveloper) about how to integrate GraphQL with Redux in React Native on medium.com
+[Article](https://medium.com/@httpdeveloper/how-to-integrate-graphql-with-redux-in-react-native-c1912bf33120) about how to integrate GraphQL with Redux in React Native on medium.com
 
 

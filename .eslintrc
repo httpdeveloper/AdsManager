@@ -1,0 +1,40 @@
+{
+	"extends": "rallycoding",
+	"globals": {
+		"__DEV__": true,
+		"ReactElement": false,
+		"eactClass": false,
+		"Class": false,
+		"global": false,
+		"jest": false,
+		"navigator": false,
+		"Promise": false,
+		"require": false,
+		"setInterval": false,
+    	"setTimeout": false,
+	},
+	"rules": {
+		"max-len": ["error", 200, 2, {
+	      ignoreUrls: true,
+	      ignoreComments: true
+	    }],
+	    "space-before-function-paren": ["error", "never"],
+	    "no-unused-expressions": ["error", {
+	    	allowShortCircuit: true,
+	    	allowTernary: true
+	    }],
+	    "arrow-body-style": "off",
+		"object-shorthand": "off",
+		"prefer-template": "off",
+
+		"react/jsx-boolean-value": [2, "always"],
+		"react/sort-comp": "off",
+	    "newline-per-chained-call": "off",
+	    "no-else-return": "off",
+	    "one-var": "off",
+	  	"no-underscore-dangle": "off",
+	  	"global-require": 'off',
+	  	"import/no-unresolved": "off",
+	  	"no-unused-vars": ["error", { vars: "all", args: "none" }]
+	}
+}
