@@ -22,3 +22,13 @@ allprojects {
         }
     }
 }
+
+subprojects {
+    afterEvaluate {project ->
+        if (project.hasProperty("android")) {
+            android {
+                compileSdkVersion 25
+            }
+        }
+    }
+}
