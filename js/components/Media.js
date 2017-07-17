@@ -33,8 +33,13 @@ import {
   Image,
   ScrollView,
   Platform,
-  PermissionsAndroid
+  PermissionsAndroid,
+  Dimensions
 } from 'react-native';
+
+const {
+	width
+} = Dimensions.get('window');
 
 const styles = require('./style/Media');
 
@@ -106,6 +111,43 @@ class Media extends Component {
 		Actions.camera({ library: this });
 	}
 
+	getImageProp() {
+		let iw, 
+			n;
+		const dw = Math.ceil(width);
+
+		if (dw >= 320 && dw < 400) {
+			n = 6; //no of images display per row
+			iw = (dw / n) - n; // image size - padding
+		} else if (dw >= 400 && dw < 500) {
+			n = 7; 
+			iw = (dw / n) - n;
+		} else if (dw >= 500 && dw < 600) {
+			n = 8; 
+			iw = (dw / n) - n;
+		} else if (dw >= 600 && dw < 700) {
+			n = 9; 
+			iw = (dw / n) - n;
+		} else if (dw >= 700 && dw < 800) {
+			n = 10; 
+			iw = (dw / n) - n;
+		} else if (dw >= 800 && dw < 900) {
+			n = 11; 
+			iw = (dw / n) - n;
+		} else if (dw >= 900 && dw < 1000) {
+			n = 12; 
+			iw = (dw / n) - n;
+		} else if (dw >= 1000) {
+			n = 13; 
+			iw = (dw / n) - n;
+		} else {
+			iw = 50;
+		}
+
+		iw = Math.ceil(iw);
+		return { width: iw - 1, height: iw - 1 };
+	}
+
 	render() {
 		if (Platform.OS === 'android' && !this.state.hasReadPermission) {
 			this.requestReadPermission();
@@ -115,15 +157,15 @@ class Media extends Component {
 			<ScrollView>
 				<View style={styles.Container}>
 					<View style={styles.wrapper}>
-						<TouchableOpacity onPress={() => this.takePicture()}>
+						<TouchableOpacity onPress={() => this.takePicture()} >
 							<View style={[styles.mediarow, styles.camera]} >
-								<Icon size={30} style={styles.cameraicon} name="camera" />
+								<Icon size={30} style={[styles.cameraicon, this.getImageProp()]} name="camera" />
 							</View>
 						</TouchableOpacity>
 						{this.state.images && this.state.images.map((image, index) => 
 							<TouchableOpacity key={index} onPress={() => this.onSelectImage(image.uri)}>
 								<View style={this.state.selectedImage === image.uri ? styles.selectedrow : styles.mediarow}>
-									<Image style={styles.image} source={{ uri: image.uri }} />
+									<Image style={[styles.image, this.getImageProp()]} source={{ uri: image.uri }} />
 								</View>
 							</TouchableOpacity>
 						)}

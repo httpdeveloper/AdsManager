@@ -46,7 +46,7 @@ const moment = require('moment');
 const styles = require('./style/Ads');
 
 export default class AdsList extends Component {
-   constructor(props) {
+  constructor(props) {
     super(props);
     this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2, 
                                         sectionHeaderHasChanged: (s1, s2) => s1 !== s2 });
@@ -54,7 +54,6 @@ export default class AdsList extends Component {
         refreshing: false,
     };
   }
-  
   getJobsLoadingSpinner() {
       return (<View style={styles.spinnercontainer}>
                 <ActivityIndicator
@@ -64,7 +63,7 @@ export default class AdsList extends Component {
                 />
             </View>);
   }
-   getListItemsWithSection(ads) {
+  getListItemsWithSection(ads) {
          const listItems = {};
          ads.forEach((list) => {
              if (!listItems[list.id]) {
@@ -74,7 +73,7 @@ export default class AdsList extends Component {
         });
 
       return listItems;
-    }
+  }
   getSectionIDs(ads) {
        const sectionIds = [];
 
@@ -85,7 +84,6 @@ export default class AdsList extends Component {
        }
        return sectionIds;
   }
-
   _onRefresh() {
       this.setState({ refreshing: true });
       this.props.dispatch(fetchNewAds());
@@ -110,8 +108,8 @@ export default class AdsList extends Component {
                 {item.user && <View style={styles.DescImgWrapperLeft}>
                     <Image style={styles.adRowProfileImg} source={{ uri: item.user.image }} />
                 </View>}
-                <View style={styles.DescImgWrapperRight}>  
-                    <NetworkImage key={item.id} source={{ uri: item.image }} resizeMode="cover" />
+                <View style={styles.DescImgWrapperRight}>
+                    <NetworkImage key={item.id} source={{ uri: item.image }} style={styles.adRowImage} resizeMode="cover" />
                     <Text numberOfLines={4} style={styles.adRowDesc}>{item.description}</Text>
                 </View>
              </View>

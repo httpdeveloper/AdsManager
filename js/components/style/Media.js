@@ -7,7 +7,6 @@ module.exports = StyleSheet.create({
   Container: {
     flex: 1,
     paddingTop: 60,
-
   },
 
   wrapper: {
@@ -17,8 +16,9 @@ module.exports = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'flex-start',
   },
+
   mediarow: {
-    padding: 3
+    padding: 1
   },
 
   image: {
@@ -26,19 +26,18 @@ module.exports = StyleSheet.create({
     height: 50
   },
   selectedrow: {
-    padding: 3,
-    borderWidth: 2,
+    padding: 1,
+    borderWidth: 1,
     borderColor: '#3F51B5',
   },
 
   camera: {
     justifyContent: 'center',
-    padding: 3
+    alignItems: 'center',
   },
 
   cameraicon: {
-    width: 50,
     textAlign: 'center',
-    marginTop: 10,
+    top: 10,
   }
 });

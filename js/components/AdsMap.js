@@ -58,7 +58,7 @@ export default class AdsMap extends Component {
   componentWillMount() {
      this.props.dispatch(fetchMapAds());
 
-     if (this.props.ads.length > 0) {
+     if (this.props.ads && this.props.ads.length > 0) {
         const region = getCenterRegion(this.props.ads);
         this.setState({ region });
      }

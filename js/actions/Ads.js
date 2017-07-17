@@ -47,6 +47,9 @@ export function fetchAds(): ThunkAction {
 					dispatch(({ type: 'FILTER_SET_ADS_OFFSET', payload: { offset: lastAd.id, loadMore: false } }: any));
 					dispatch(({ type: 'FETCH_ADS_FULFILLED', payload: resp.data.allAds }: any));
 				}
+			}).catch((e) => {
+				dispatch(({ type: 'FETCH_ADS_FULFILLED', payload: null }: any));
+				console.log(e);
 			});
 
 			client.subscribe({
@@ -82,6 +85,9 @@ export function fetchGridAds(): ThunkAction {
 					dispatch(({ type: 'FILTER_SET_ADS_OFFSET', payload: { offset: lastAd.id } }: any));
 					dispatch(({ type: 'FETCH_ADS_FULFILLED', payload: resp.data.allAds }: any));
 				}
+			}).catch((e) => {
+				dispatch(({ type: 'FETCH_ADS_FULFILLED', payload: null }: any));
+				console.log(e);
 			});
 		} 
 	};
@@ -102,6 +108,9 @@ export function fetchMapAds(): ThunkAction {
 					dispatch(({ type: 'FILTER_SET_ADS_OFFSET', payload: { offset: lastAd.id } }: any));
 					dispatch(({ type: 'FETCH_ADS_FULFILLED', payload: resp.data.allAds }: any));
 				}
+			}).catch((e) => {
+				dispatch(({ type: 'FETCH_ADS_FULFILLED', payload: null }: any));
+				console.log(e);
 			});
 		}
 	};
@@ -126,7 +135,7 @@ export function fetchOldAds(): ThunkAction {
 				dispatch(({ type: 'FETCH_ADS_FULFILLED', payload: adlistNew }: any));
 			} 
 			dispatch(({ type: 'FETCH_OLDADS_FULFILLED', payload: items }: any)); 
-		});
+		}).catch((e) => console.log(e));
 	};
 }
 
@@ -149,7 +158,7 @@ export function fetchGridOldAds(): ThunkAction {
 				dispatch(({ type: 'FETCH_ADS_FULFILLED', payload: adlistNew }: any));
 			}
 			dispatch(({ type: 'FETCH_OLDADS_FULFILLED', payload: items }: any));
-		});
+		}).catch((e) => console.log(e));
 	};
 }
 
@@ -168,7 +177,7 @@ export function fetchNewAds(): ThunkAction {
 				dispatch(({ type: 'FILTER_SET_ADS_OFFSET', payload: { offset: lastAd.id, loadMore: false } }: any));
 				dispatch(({ type: 'FETCH_ADS_FULFILLED', payload: resp.data.allAds }: any));
 			}
-		});
+		}).catch((e) => console.log(e));
 	};
 }
 

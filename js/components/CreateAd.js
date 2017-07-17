@@ -139,7 +139,7 @@ export default class CreateAd extends Component {
   }
 
   /**
-   * Upload/Choose picture and submit
+   * Upload/Choose picture
    * @return Promise
    */
   async _uploadImage() {
@@ -159,7 +159,6 @@ export default class CreateAd extends Component {
   }
   /**
    * Save ad
-   * @param  {[type]} userId [description]
    * @return Promise
    */
   async _saveAd(userId) {
@@ -322,7 +321,7 @@ export default class CreateAd extends Component {
               <Text style={styles.inputHeading}>Address</Text>
               <TextInput
                 style={styles.inputStyle}
-                placeholder='Address calculating...'
+                placeholder='Address...'
                 onChangeText={(text) => this.setState({ address: text })}
                 value={this.state.address}
                 autoCapitalize='none'

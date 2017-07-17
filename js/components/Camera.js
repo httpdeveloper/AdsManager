@@ -47,7 +47,7 @@ const styles = require('./style/Camera');
 			this.state = {
 				cameraType: 'back',
 				captureImage: null,
-				hasCamerPermission: false
+				hasCameraPermission: false
 			};
 		}
 
@@ -62,13 +62,13 @@ const styles = require('./style/Camera');
 				).then((res) => {
 					let permissionGranted = true;
 					Object.keys(res).forEach((key) => {
-						if (res[key] !== 'granted') {
+						if (res[key] !== 'granted' && res[key] !== true) {
 							permissionGranted = permissionGranted && false;
 						}
 					});
 					
 					if (permissionGranted) {
-						this.setState({ hasCamerPermission: true });
+						this.setState({ hasCameraPermission: true });
 					}
 				});
 			} catch (err) {
@@ -98,7 +98,7 @@ const styles = require('./style/Camera');
 		}
 
 		render() {
-			if (Platform.OS === 'android' && !this.state.hasCamerPermission) {
+			if (Platform.OS === 'android' && !this.state.hasCameraPermission) {
 				this.requestCameraPermission();
 				return <View />;
 			}

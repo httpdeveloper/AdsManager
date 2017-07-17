@@ -52,9 +52,8 @@ module.exports = StyleSheet.create({
 		marginRight: 10
 	},
 	adRowImage: {
-		width: width - 100,
-		height: 200,
-		padding: 5,
+		width: null,
+		height: 160,
 		flex: 1
 	},
 	createDateWrapper: {
@@ -74,7 +73,8 @@ module.exports = StyleSheet.create({
 
 	DescImgWrapperRight: {
 		flex: 1,
-		
+		paddingRight: 5,
+		backgroundColor: '#fff'	
 	},
 
 	adRowProfileImg: {
