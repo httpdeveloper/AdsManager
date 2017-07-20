@@ -28,14 +28,15 @@ import { createAdMutation, createUserMutation } from '../actions/graphql/Mutatio
 import CreateAd from '../components/CreateAd';
 
 const gContainer = graphql(createAdMutation, { name: 'postAdMutation' })(
-		graphql(createUserMutation, { name: 'createUserMutation' })(CreateAd)
-	);
+	graphql(createUserMutation, { name: 'createUserMutation' })(CreateAd)
+);
 
 function mapStateToProps(store) {
   return {
     imagePath: store.Media.imagePath,
     imageSelected: store.Media.selected,
     user: store.User.user,
+    location: store.Location.location
   };
 }
 

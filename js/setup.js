@@ -40,7 +40,6 @@ function setup(): ReactClass<{}> {
 			);
 		}
 	}
-	
 	return Root;
 }
 

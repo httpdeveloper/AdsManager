@@ -51,7 +51,6 @@ if (Platform.OS === 'android') {
 const styles = require('./style/CreateAd');
 
 export default class CreateAd extends Component {
-
   watchID: ?number = null;
   geocoding: false;
 
@@ -77,7 +76,7 @@ export default class CreateAd extends Component {
         email: ''
       },
       progressValue: 0,
-      contentHeight: 0
+      contentHeight: 0,
     };
   }
 
@@ -96,11 +95,16 @@ export default class CreateAd extends Component {
                 lng: position.coords.longitude
             };
 
+            let payload = { latitude: latlng.lat, longitude: latlng.lng };
+            this.props.dispatch({ type: 'SET_LOCATION', payload });
+
             this.geocoding = true;
             Geocoder.geocodePosition(latlng).then(res => {
                 if (res && this.geocoding) {
                   const address = res[0].formattedAddress;
                   this.setState({ address });
+                  payload = { address, latitude: latlng.lat, longitude: latlng.lng };
+                  this.props.dispatch({ type: 'SET_LOCATION', payload });
                 }
             })
             .catch(err => console.log(err));
@@ -121,11 +125,16 @@ export default class CreateAd extends Component {
                 lng: position.coords.longitude
             };
 
+            let payload = { latitude: latlng.lat, longitude: latlng.lng };
+            this.props.dispatch({ type: 'SET_LOCATION', payload });
+
             this.geocoding = true;
             Geocoder.geocodePosition(latlng).then(res => {
                 if (res && this.geocoding) {
                   const address = res[0].formattedAddress;
                   this.setState({ address });
+                  payload = { address, latitude: latlng.lat, longitude: latlng.lng };
+                  this.props.dispatch({ type: 'SET_LOCATION', payload });
                 }
             })
             .catch(err => console.log(err));
@@ -136,6 +145,12 @@ export default class CreateAd extends Component {
   componentWillUnmount() {
     this.geocoding = false;
     navigator.geolocation.clearWatch(this.watchID);
+  }
+
+  componentWillReceiveProps(props) {
+    if (this.props.location !== props.location) {
+       this.setState({ address: (props.location.address || this.state.address), latitude: props.location.latitude.toString(), longitude: props.location.longitude.toString() });
+    }
   }
 
   /**
@@ -215,7 +230,7 @@ export default class CreateAd extends Component {
   }
 
   /**
-   * Reset form inputs after successfully ad created
+   * Reset form inputs
    * @return void
    */
   
@@ -230,7 +245,7 @@ export default class CreateAd extends Component {
   }
 
   /**
-   * Validate form inputs
+   * Validate form inputs (Simple validation that checks empty string)
    * @return bool
    */
   

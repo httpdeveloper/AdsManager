@@ -22,29 +22,12 @@
 
 'use strict';
 
-import React, { Component } from 'react';
 import {
-  Image
+	StyleSheet
 } from 'react-native';
 
-const styles = require('./style/MapCustomMarker');
-
-export default class MapCustomMarker extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        loaded: false
-    };
-  }
-
-  render() {
-    return (
-        <Image 
-          key={this.state.loaded + ':' + this.props.mapType}
-          style={styles.markerIcon} 
-          source={this.props.mapType === 'standard' ? require('./img/marker_blue.png') : require('./img/marker_red.png')} 
-          onLoad={() => this.setState({ loaded: true })}
-        />
-    );
-  }
-}
+module.exports = StyleSheet.create({
+	container: {
+		flex: 1
+	},
+});

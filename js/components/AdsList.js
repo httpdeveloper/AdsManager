@@ -54,7 +54,8 @@ export default class AdsList extends Component {
         refreshing: false,
     };
   }
-  getJobsLoadingSpinner() {
+
+  getLoadingSpinner() {
       return (<View style={styles.spinnercontainer}>
                 <ActivityIndicator
                   animating={true}
@@ -63,6 +64,7 @@ export default class AdsList extends Component {
                 />
             </View>);
   }
+
   getListItemsWithSection(ads) {
          const listItems = {};
          ads.forEach((list) => {
@@ -71,9 +73,9 @@ export default class AdsList extends Component {
              }
             listItems[list.id].push(list);
         });
-
       return listItems;
   }
+
   getSectionIDs(ads) {
        const sectionIds = [];
 
@@ -84,6 +86,7 @@ export default class AdsList extends Component {
        }
        return sectionIds;
   }
+
   _onRefresh() {
       this.setState({ refreshing: true });
       this.props.dispatch(fetchNewAds());
@@ -91,7 +94,7 @@ export default class AdsList extends Component {
       if (this.props.fetched) {
         this.setState({ refreshing: false });
       }
-    }
+  }
 
   _onEndReached() {
     this.props.dispatch(fetchOldAds());
@@ -148,7 +151,7 @@ export default class AdsList extends Component {
   render() {
     const { ads, fetching, fetched } = this.props;
     if (fetching) {
-      return this.getJobsLoadingSpinner();
+      return this.getLoadingSpinner();
     }
 
     if (fetched && !ads) {

@@ -36,7 +36,6 @@ import Profile from '../containers/Profile';
 const styles = require('./style/SideMenu');
 
  export default class SideMenu extends Component {
-
     onPressHome() {
       this.closeDrawer();
       setTimeout(() => {
@@ -55,7 +54,7 @@ const styles = require('./style/SideMenu');
         }, 1);
     }
 
-     onPressArticle(title) {
+    onPressArticle(title) {
         this.closeDrawer();
         setTimeout(() => {
             Actions.article({ title });

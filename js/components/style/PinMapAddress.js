@@ -22,29 +22,58 @@
 
 'use strict';
 
-import React, { Component } from 'react';
 import {
-  Image
+	StyleSheet,
+	Dimensions
 } from 'react-native';
 
-const styles = require('./style/MapCustomMarker');
+const {
+	width,
+} = Dimensions.get('window');
 
-export default class MapCustomMarker extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        loaded: false
-    };
-  }
-
-  render() {
-    return (
-        <Image 
-          key={this.state.loaded + ':' + this.props.mapType}
-          style={styles.markerIcon} 
-          source={this.props.mapType === 'standard' ? require('./img/marker_blue.png') : require('./img/marker_red.png')} 
-          onLoad={() => this.setState({ loaded: true })}
-        />
-    );
-  }
-}
+module.exports = StyleSheet.create({
+	container: {
+		...StyleSheet.absoluteFillObject,
+	},
+	map: {
+		...StyleSheet.absoluteFillObject,
+	},
+	searchbar: {
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		width,
+		backgroundColor: '#f5f5f5',
+		padding: 20,
+		opacity: 0.5,
+	},
+	bottom: {
+		position: 'absolute',
+		bottom: 0,
+		left: 0,
+		backgroundColor: '#FFFFFF',
+		flexDirection: 'row',
+		width,
+		justifyContent: 'space-around'
+	},
+	bottomTxt: {
+		fontWeight: 'bold',
+		padding: 10
+	},
+	searchtxt: {
+		padding: 10,
+		fontWeight: 'bold'
+	},
+	spinnercontainer: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	spinner: {
+		height: 80,
+	},
+	blank: {
+		flex: 0,
+		backgroundColor: '#3F51B5'
+	},
+});

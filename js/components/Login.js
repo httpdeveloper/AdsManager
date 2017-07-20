@@ -37,9 +37,8 @@ const styles = require('./style/Login');
 const companyLogo = require('./img/company.jpg');
 
  export default class Login extends Component {
-
 	_isMounted: boolean;
-
+	
 	constructor(props) { 
 		super(props);
 
@@ -66,7 +65,6 @@ const companyLogo = require('./img/company.jpg');
 
 	async onPressLogin() {
 		this.setState({ logInProcess: true });
-
 		try {
 			await Promise.race([
 				this.props.dispatch(FBLogin()),
@@ -93,8 +91,7 @@ const companyLogo = require('./img/company.jpg');
 		const delayOffset = 500;
 		const minInputRange = (delay <= this.state.animToValue) ? delay : this.state.animToValue - delayOffset;
 		const maxInputRange = (delay <= this.state.animToValue) ? Math.min(delay + delayOffset, this.state.animToValue) : this.state.animToValue;		
-
-	return {
+		return {
 			opacity: this.state.fadeAnim.interpolate({
 				inputRange: [minInputRange, maxInputRange],
 				outputRange: [0, 1],

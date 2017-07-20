@@ -45,12 +45,11 @@ const moment = require('moment');
 const styles = require('./style/Ad');
 
 export default class AdDetail extends Component {
-  
   componentWillMount() {
      this.props.dispatch(fetchAd(this.props.id));
   }
 
-  getJobsLoadingSpinner() {
+  getLoadingSpinner() {
       return (<View style={styles.spinnercontainer}>
                 <ActivityIndicator
                   animating={true}
@@ -69,16 +68,15 @@ export default class AdDetail extends Component {
   render() {
     const { fetching, ad } = this.props;
     if (fetching) {
-      return this.getJobsLoadingSpinner();
+      return this.getLoadingSpinner();
     }
 
-      if (!ad) {
+    if (!ad) {
       return this.noJob();
     }
 
     const mapArr = [];
     mapArr.push({ latitude: ad.latitude, longitude: ad.longitude });
-
     const region = getCenterRegion(mapArr);
     
     return (
@@ -95,17 +93,12 @@ export default class AdDetail extends Component {
                   </View>
                 </View>
                 <NetworkImage key={ad.id} source={{ uri: ad.image }} style={styles.adRowImage} />
-
                 <Text style={styles.headerDetails}>Details: </Text>
                  <Divider style={styles.divider} />
                  <Text style={styles.adRowDesc}>{ad.description}</Text>
-                
                  <Text style={styles.headerLocation}>Location: </Text>
                  <Divider style={styles.divider} />
-
                  <View style={styles.mapWrapper}>
-                 
-                     
                       <MapView
                         style={styles.map}
                         region={region}
@@ -116,14 +109,12 @@ export default class AdDetail extends Component {
                         description={ad.description}
                       >  
                           <MapCustomMarker mapType={'standard'} />
-
                              <MapView.Callout>
                                 <MapCustomTooltip {...ad} />
                             </MapView.Callout>
                          </MapView.Marker>
                      </MapView>
                   </View>
-                  
                  <Text style={styles.headerDetails}>Agent: </Text>
                  <Divider style={styles.divider} />
                   {ad.user && <View style={styles.agent}>
@@ -135,7 +126,6 @@ export default class AdDetail extends Component {
                         <Text>{ad.user.email}</Text>
                      </View>
                   </View>}
-
                  <Divider style={styles.divider} />
                  <View style={styles.adRowBottom}>
                       <Text><Icon name="thumbs-o-up" /> Like</Text>

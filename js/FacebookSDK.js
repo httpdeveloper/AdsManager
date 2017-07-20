@@ -43,29 +43,22 @@ const getAccessToken = async (): any => {
 const loginWithFBSDK = async (field: string): Promise<object> => {
 	const scope = field || 'public_profile,email';
     const permissions = scope.split(',');
-
 	const loginResult = await LoginManager.logInWithReadPermissions(permissions);
-
 	if (loginResult.isCancelled) {
 		throw new Error('Login cancelled');
 	}
-
 	const accessToken = getAccessToken();
-
 	if (!accessToken) {
 		throw new Error('No access token');
 	}
-
 	_authResp = {
 		userID: accessToken.userID,
 		accessToken: accessToken.accessToken,
 	};
-
 	return _authResp;
 };
 
 const FacebookSDK = {
-
 	getAccessToken: function() {
 		return getAccessToken();
 	},

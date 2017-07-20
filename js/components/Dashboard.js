@@ -32,27 +32,24 @@ import AdsList from '../containers/AdsList';
 import AdsGrid from '../containers/AdsGrid';
 import AdsMap from '../containers/AdsMap';
 
-
 const ScrollableTabView = require('react-native-scrollable-tab-view');
-
 const styles = require('./style/Dashboard');
 
 export default class Dashboard extends Component {
-		render() {
-			return (
-				<View style={Platform.OS === 'ios' ? styles.adscontainer : styles.adscontainerandroid}>
-					<ScrollableTabView 
-						tabBarUnderlineStyle={styles.tabBarUnderlineStyle} 
-						tabBarActiveTextColor='#fff'
-						tabBarBackgroundColor='#3F51B5'
-						tabBarInactiveTextColor='#fff'
-					>
-						<AdsList tabLabel="LIST" />
-						<AdsGrid tabLabel="GRID" />
-						<AdsMap tabLabel="MAP" />
-					</ScrollableTabView>
-				</View>
-				
-			);
-		}
+	render() {
+		return (
+			<View style={Platform.OS === 'ios' ? styles.adscontainer : styles.adscontainerandroid}>
+				<ScrollableTabView 
+					tabBarUnderlineStyle={styles.tabBarUnderlineStyle} 
+					tabBarActiveTextColor='#fff'
+					tabBarBackgroundColor='#3F51B5'
+					tabBarInactiveTextColor='#fff'
+				>
+					<AdsList tabLabel="LIST" />
+					<AdsGrid tabLabel="GRID" />
+					<AdsMap tabLabel="MAP" />
+				</ScrollableTabView>
+			</View>
+		);
+	}
 }

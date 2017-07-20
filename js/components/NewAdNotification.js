@@ -44,6 +44,7 @@ export default class FadeInView extends Component {
       fadeAnim: new Animated.Value(0),         
     };
   }
+  
   componentDidMount() {
     Animated.timing(                           
       this.state.fadeAnim,                     

@@ -25,20 +25,19 @@
 import React, { Component } from 'react';
 import { Scene, Router, Modal, Actions, Reducer } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   Platform,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import MenuDrawer from './components/MenuDrawer';
 import Dashboard from './components/Dashboard';
-import AdsListView from './containers/AdsList';
 import AdDetail from './containers/AdDetail';
 import CreateAd from './containers/CreateAd';
 import Media from './components/Media';
 import Camera from './components/Camera';
 import Profile from './containers/Profile';
 import Article from './components/Article';
+import PinMapAddress from './containers/PinMapAddress';
 import ProfilePicture from './containers/ProfilePicture';
 
 const styles = require('./components/style/Navigator');
@@ -51,7 +50,6 @@ const reducerCreate = params => {
 };
 
 class Navigator extends Component {
-
   onSelectMedia() {
     if (this.props.imagePath) {
         this.props.dispatch({ 
@@ -60,7 +58,6 @@ class Navigator extends Component {
         });
         Actions.pop();
     }
-   
     return false;
   }
 
@@ -76,62 +73,55 @@ class Navigator extends Component {
                         <Scene 
                             key="dashboard" 
                             component={Dashboard} 
-                            title="Ads" 
-                            navigationBarStyle={styles.tabAdsHeaderColor}
-                            titleStyle={styles.headerTxtColor}
-                            rightTitle={<Icon style={styles.sceneAd} name="plus" size={20} />}
-                            onRight={() => Actions.createad()}
-                            onLeft={() => Actions.refresh({ key: 'drawer', open: value => !value })} 
-                            leftTitle={Platform.OS === 'ios' ? <ProfilePicture width={30} height={30} /> : <Icon style={styles.drawerMenuIcon} name="bars" />} 
                             initial={true} 
-                        />
-                        <Scene 
-                            key="ads" 
-                            component={AdsListView} 
                             title="Ads" 
-                            navigationBarStyle={styles.tabAdsHeaderColor}
                             titleStyle={styles.headerTxtColor}
+                            leftTitle={Platform.OS === 'ios' ? <ProfilePicture width={30} height={30} /> : <Icon style={styles.drawerMenuIcon} name="bars" />} 
+                            onLeft={() => Actions.refresh({ key: 'drawer', open: value => !value })} 
+                            rightTitle={<Icon style={styles.sceneAd} name="plus" size={20} />}
+                            onRight={() => Actions.createad({ type: 'replace' })}
+                            navigationBarStyle={styles.tabAdsHeaderColor}
                         />
+                      
                         <Scene 
                             key="ad" 
                             component={AdDetail} 
                             title="Ad" 
-                            navigationBarStyle={styles.tabAdsHeaderColor}
                             titleStyle={styles.headerTxtColor}
                             leftButtonIconStyle={styles.leftButtonIconStyle}
-                            
+                            navigationBarStyle={styles.tabAdsHeaderColor}
                         />
                         <Scene 
                             key="createad" 
                             component={CreateAd} 
                             title="Create Ad" 
-                            hideNavBar={false} 
-                            navigationBarStyle={styles.tabAdsHeaderColor}
-                            leftButtonIconStyle={styles.leftButtonIconStyle} 
                             titleStyle={styles.headerTxtColor}
-                            backButtonTextStyle={styles.headerTxtColor}
-                            panHandlers={null}
+                            leftTitle="Close"
+                            leftButtonTextStyle={styles.headerTxtColor} 
+                            onLeft={() => Actions.dashboard({ type: 'reset' })}
+                            rightTitle={<Icon name="map-marker" color={'#FFFFFF'} size={20} />}
+                            onRight={() => Actions.locate()}
+                            hideNavBar={false} 
                             direction="vertical"
-                            backTitle="Close"
-                            onLeft={() => Actions.pop()}
-                            backButtonImage={null}
+                            navigationBarStyle={styles.tabAdsHeaderColor}
+                            panHandlers={null}
+
                         />
                         <Scene 
                             key="media" 
                             component={Media} 
                             title="Media" 
-                            navigationBarStyle={styles.tabAdsHeaderColor}
                             titleStyle={styles.headerTxtColor}
-                            leftButtonIconStyle={styles.leftButtonIconStyle}
-                            backButtonTextStyle={styles.headerTxtColor}
-                            rightButtonTextStyle={styles.headerTxtColor}
-                            direction="vertical"
                             backTitle="Close"
-                            onLeft={() => Actions.pop()}
+                            backButtonTextStyle={styles.headerTxtColor}
                             backButtonImage={null}
-                            panHandlers={null}
+                            onLeft={() => Actions.pop()}
                             rightTitle="Select"
+                            rightButtonTextStyle={styles.headerTxtColor}
                             onRight={this.onSelectMedia.bind(this)}
+                            direction="vertical"
+                            navigationBarStyle={styles.tabAdsHeaderColor}
+                            panHandlers={null}
                         />
                         <Scene 
                             key="camera" 
@@ -145,19 +135,24 @@ class Navigator extends Component {
                             key="profile" 
                             component={Profile} 
                             title="Profile"
-                            navigationBarStyle={styles.tabAdsHeaderColor}
                             titleStyle={styles.headerTxtColor}
                             leftButtonIconStyle={styles.leftButtonIconStyle} 
+                            navigationBarStyle={styles.tabAdsHeaderColor}
                         />
                         <Scene 
                             key="article" 
                             component={Article} 
                             title="Article"
-                            navigationBarStyle={styles.tabAdsHeaderColor}
                             titleStyle={styles.headerTxtColor}
                             leftButtonIconStyle={styles.leftButtonIconStyle} 
+                            navigationBarStyle={styles.tabAdsHeaderColor}
                         />
                     </Scene>
+                    <Scene 
+                        key="locate" 
+                        component={PinMapAddress} 
+                        hideNavBar={true}
+                    />
                 </Scene>
             </Scene>
         </Router>

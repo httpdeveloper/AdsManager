@@ -32,11 +32,10 @@ import {
 const styles = require('./style/LoginOverlay');
 
 export default class LoginOverlay extends Component {
- render() {
+  render() {
     if (!this.props.logInProcess) {
       return <View />;
     }
-
     return (
       <View style={styles.LoginOverlay}>
         <ActivityIndicator
@@ -45,6 +44,6 @@ export default class LoginOverlay extends Component {
         />
         <Text style={styles.loggintxt}>Logging...</Text>
       </View>
-      );
+    );
   }
 }

@@ -62,5 +62,6 @@ export function getCenterRegion(points: Array<ParseObject>): Object { // Referen
       longitude: midY,
       latitudeDelta: deltaX,
       longitudeDelta: deltaY
+      
     };
 }

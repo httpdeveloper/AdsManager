@@ -1,4 +1,5 @@
 /**
+ *
  *	Copyright (c) 2017 Dinesh Maharjan <httpdeveloper@gmail.com>
  *
  *	Permission is hereby granted, free of charge, to any person obtaining a copy of 
@@ -18,33 +19,24 @@
  *	CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
  *	OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
+ *  @flow
  */
 
 'use strict';
 
-import React, { Component } from 'react';
-import {
-  Image
-} from 'react-native';
+const initialState = {
+	location: null,
+};
 
-const styles = require('./style/MapCustomMarker');
+type State = Object;
+type Action = { type: string; payload: Object; };
 
-export default class MapCustomMarker extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        loaded: false
-    };
-  }
-
-  render() {
-    return (
-        <Image 
-          key={this.state.loaded + ':' + this.props.mapType}
-          style={styles.markerIcon} 
-          source={this.props.mapType === 'standard' ? require('./img/marker_blue.png') : require('./img/marker_red.png')} 
-          onLoad={() => this.setState({ loaded: true })}
-        />
-    );
-  }
+export default function reducers(state: State = initialState, action: Action) {
+	switch (action.type) {
+		case 'SET_LOCATION': 
+			return { ...state, location: action.payload };		
+		default:
+			return state;
+		
+	}
 }

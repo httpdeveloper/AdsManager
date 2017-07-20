@@ -28,11 +28,13 @@ import Ad from './Ad';
 import Filter from './Filter';
 import Media from './Media';
 import User from './User';
+import Location from './Location';
 
 export default combineReducers({
 	Ads,
 	Ad,
 	Filter,
 	Media,
-	User
+	User,
+	Location
 });

@@ -40,5 +40,4 @@ const client = new ApolloClient({
   networkInterface: networkInterfaceWithSubscriptions,
 });
 
-
 export default client;

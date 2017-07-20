@@ -31,12 +31,10 @@ import {
 const styles = require('./style/FooterLoading');
 
 export default class FooterLoading extends Component {
-
-     render() {
-      if (!this.props.showmore) {
-          return <View />;
-      }
-
+  render() {
+    if (!this.props.showmore) {
+      return <View />;
+    }
     return (
        <View style={styles.spinnercontainer}>
           <ActivityIndicator

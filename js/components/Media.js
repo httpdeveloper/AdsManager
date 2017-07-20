@@ -44,7 +44,6 @@ const {
 const styles = require('./style/Media');
 
 class Media extends Component {
-
 	constructor(props) {
 		super(props);
 
@@ -74,8 +73,6 @@ class Media extends Component {
 			first: 50,
 			assetType: 'Photos',
 		};
-
-
 		await CameraRoll.getPhotos(fetchParams).then(
 			(data) => {
 				const assets = data.edges;
@@ -118,7 +115,7 @@ class Media extends Component {
 
 		if (dw >= 320 && dw < 400) {
 			n = 6; //no of images display per row
-			iw = (dw / n) - n; // image size - padding
+			iw = (dw / n) - n; // image width - padding
 		} else if (dw >= 400 && dw < 500) {
 			n = 7; 
 			iw = (dw / n) - n;

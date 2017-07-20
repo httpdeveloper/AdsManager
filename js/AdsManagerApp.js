@@ -33,28 +33,25 @@ import Login from './containers/Login';
 import Navigator from './Navigator';
 import { fetchAds } from './actions/Ads';
 
-
 const styles = require('./components/style/App');
 
 const AdsManagerApp = React.createClass({
-
   componentWillMount: function() {
     this.props.dispatch(fetchAds());
   },
 
   render: function() {
-     if (!this.props.isLoggedIn) return <Login />;
-
-      return (
-        <View style={styles.main}>
-            <StatusBar
-                backgroundColor="#3F51B5"
-                barStyle="light-content"
-                translucent={true}
-            />
-            <Navigator />
-        </View>
-      );
+    if (!this.props.isLoggedIn) return <Login />;
+    return (
+      <View style={styles.main}>
+          <StatusBar
+              backgroundColor="#3F51B5"
+              barStyle="light-content"
+              translucent={true}
+          />
+          <Navigator />
+      </View>
+    );
   }
 });
 

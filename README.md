@@ -52,11 +52,11 @@ setting: {
   NETWORK_INTERFACE_URL: 'https://api.graph.cool/simple/v1/API_KEY',
   SUBSCRIPTION_CLIENT_URL: 'wss://subscriptions.graph.cool/v1/API_KEY',
   GOOGLE_MAP_API_KEY: 'API_KEY',
-  IMAGE_UPLOAD_API: 'http://yourdomain.com/IMAGE_UPLOAD_API',
+  IMAGE_UPLOAD_API: 'http://your-api-domain.com/IMAGE_UPLOAD_API',
   ...
 }
 
-Get API_KEY from https://console.graph.cool ENDPOINTS
+Get API_KEY from https://console.graph.cool ENDPOINTS and https://console.developers.google.com
 
 ```
 
@@ -69,7 +69,7 @@ $status = false;
 $msg = '';
 $imageUrl = '';
 $userId = (isset($_POST['userId']) && !empty($_POST['userId'])) ? $_POST['userId'] : 1;
-$rootUrl = 'http://yourdomain.com';
+$rootUrl = 'http://your-api-domain.com';
 $rootPath = $_SERVER['DOCUMENT_ROOT'];
 $token = 'BEARER_TOKEN';
 $imgUploadFolder = 'IMAGE_UPLOAD_FOLDER';
@@ -145,10 +145,6 @@ react-native run-ios
 ### 8. Running on Android
 ```
 react-native run-android
-```
-### 9. Finish
-```
-Author is looking for a good job :)
 ```
 
 # Demo

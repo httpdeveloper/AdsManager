@@ -27,7 +27,7 @@ module.exports = {
 		NETWORK_INTERFACE_URL: 'https://api.graph.cool/simple/v1/API_KEY', // Get API_KEY from https://console.graph.cool ENDPOINTS (SIMPLE)
 		SUBSCRIPTION_CLIENT_URL: 'wss://subscriptions.graph.cool/v1/API_KEY', //Get API_KEY from https://console.graph.cool ENDPOINTS (SUBSCRIPTIONS)
 		GOOGLE_MAP_API_KEY: 'AIzaSyB-a36YrqU2TnNDiwtz0zY_7FcctwSYX3s', //Use your own API_KEY from https://console.developers.google.com
-		IMAGE_UPLOAD_API: 'http://yourdomain.com/IMAGE_UPLOAD_API',
+		IMAGE_UPLOAD_API: 'http://your-api-domain.com/IMAGE_UPLOAD_API',
 		IMAGE_UPLOAD_API_ACCESS_TOKEN: 'ACCESS_TOKEN',
 		LOCAL_STORAGE_KEY: '@loginaccesstoken'
 	}

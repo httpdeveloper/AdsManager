@@ -39,7 +39,7 @@ import NoAds from './NoAds';
 const styles = require('./style/Map');
 
 export default class AdsMap extends Component {
-   constructor(props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -54,7 +54,6 @@ export default class AdsMap extends Component {
         mapType: 'standard',
     };
   }
-
   componentWillMount() {
      this.props.dispatch(fetchMapAds());
 
@@ -63,16 +62,13 @@ export default class AdsMap extends Component {
         this.setState({ region });
      }
   }
-
   onPressMapType(mapType) {
       this.setState({ mapType });
   }
-
   onRegionChange(region) {
     this.setState({ region });
   }
-
-  getJobsLoadingSpinner() {
+  getLoadingSpinner() {
     return (<View style={styles.spinnercontainer}>
               <ActivityIndicator
                 animating={true}
@@ -81,11 +77,10 @@ export default class AdsMap extends Component {
               />
           </View>);
   }
-
   render() {
    const { ads, fetching, fetched } = this.props;
     if (fetching) {
-      return this.getJobsLoadingSpinner();
+      return this.getLoadingSpinner();
     }
 
     if (fetched && !ads) {
@@ -98,6 +93,7 @@ export default class AdsMap extends Component {
           region={this.state.region}
           style={styles.map}
           mapType={this.state.mapType}
+          onRegionChangeComplete={this.onRegionChange.bind(this)}
         >
         {ads.map(ad => (
           <MapView.Marker

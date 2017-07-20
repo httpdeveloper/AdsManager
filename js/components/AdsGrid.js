@@ -64,7 +64,7 @@ export default class AdsGrid extends Component {
       }
   }
 
-  getJobsLoadingSpinner() {
+  getLoadingSpinner() {
         return (<View style={styles.spinnercontainer}>
                   <ActivityIndicator
                     animating={true}
@@ -77,13 +77,11 @@ export default class AdsGrid extends Component {
   render() {
     const { ads, fetching, fetched } = this.props;
     if (fetching) {
-      return this.getJobsLoadingSpinner();
+      return this.getLoadingSpinner();
     }
-
     if (fetched && !ads) {
         return <NoAds />;
     }
-
     return (
       <ScrollView 
             ref={(scrollView) => { this._scrollView = scrollView; }} 
@@ -91,20 +89,18 @@ export default class AdsGrid extends Component {
             onScroll={this.onScrollGrid.bind(this)}
       >
         <View style={styles.container}>
-        {ads.map((ad) => 
+          {ads.map((ad) => 
             <View style={styles.adRow} key={ad.id}>
-
               <View style={styles.subContainer}>
                   <View style={styles.topContainer}>
                     <NetworkImage style={styles.adRowImage} source={{ uri: ad.image }} />
                   </View>
                    <View style={styles.middleContainer}>
                       <Text numberOfLines={1} onPress={() => Actions.ad({ id: ad.id, title: ad.title })} style={styles.adTitle}>
-                      {ad.title}
+                          {ad.title}
                       </Text>
                       <Text style={styles.address}>{ad.address}</Text>
                       <Text numberOfLines={3} style={styles.adRowDesc}>{ad.description}</Text>
-                      
                   </View>
                    <View style={styles.bottomContainer}>
                    <Divider style={styles.divider} />
@@ -118,8 +114,7 @@ export default class AdsGrid extends Component {
                   </View>
               </View>
             </View>
-        )}
-
+          )}
         </View>
         <FooterLoading showmore={this.props.oldfetching} />
       </ScrollView>
