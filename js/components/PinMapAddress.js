@@ -181,7 +181,7 @@ export default class PinMapAddress extends Component {
                     onSearch={(result) => {
                     if (result) {
                        const newRegion = { ...this.state.region, latitude: result.latlng.lat, longitude: result.latlng.lng };
-                       this.setState({ searching: false, region: newRegion, address: result.address, pinedMarker: { latitude: result.latlng.lat, longitude: result.latlng.lng } });
+                       this.setState({ searching: false, region: newRegion, address: result.address, pinedMarker: { latitude: result.latlng.lat, longitude: result.latlng.lng }, hasLocation: true });
                     } else {
                        this.setState({ searching: false });
                     }
